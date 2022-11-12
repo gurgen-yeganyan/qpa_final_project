@@ -3,17 +3,15 @@ Creates a database used for DNA to mRNA transcription
 and mRNA to protein translation.
 """
 
-from sqlalchemy import create_engine
-from sqlalchemy import MetaData
+from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
 from table_models import DnaNucleotide, RnaNucleotide, RnaCodon, AminoAcid
 from table_models import Base
-from conversion_tables import transcription_table
-from conversion_tables import translation_table
+from conversion_tables import transcription_table, translation_table
 
 
-engine = create_engine('sqlite:///project_database.db', echo = True)
+engine = create_engine('sqlite:///project_database.db')
 metadata_obj = MetaData()
 Base.metadata.create_all(engine)
 Session = sessionmaker(engine)
