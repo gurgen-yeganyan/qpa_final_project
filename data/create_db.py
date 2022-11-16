@@ -6,9 +6,9 @@ and mRNA to protein translation.
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
-from table_models import DnaNucleotide, RnaNucleotide, RnaCodon, AminoAcid
-from table_models import Base
-from conversion_tables import transcription_table, translation_table
+from data.table_models import DnaNucleotide, RnaNucleotide, RnaCodon, AminoAcid
+from data.table_models import Base
+from data.conversion_tables import transcription_table, translation_table
 
 
 engine = create_engine('sqlite:///project_database.db')
@@ -24,9 +24,8 @@ with Session() as session:
     session.commit()
     
     for acid in translation_table:
-        name = acid
         full_name = translation_table[acid]['full_name']
-        new_acid = AminoAcid(acid_name=name, acid_full_name=full_name)
+        new_acid = AminoAcid(acid_name=acid, acid_full_name=full_name)
         codons = translation_table[acid]['codons']
         for codon in codons:
             new_codon = RnaCodon(codon_name = codon, amino_acid = new_acid)
