@@ -26,11 +26,3 @@ def represent_gc_ratio(string: str, step: int) -> None:
     plt.xlabel('Genome position')
     plt.ylabel('GC-content(%)')
     plt.savefig('GC_ratio.png')
-
-
-if __name__ == '__main__':
-    dna = ''
-    with open('covid_dna.txt', 'r') as file:
-        dna = file.read()
-
-    represent_gc_ratio(dna, 100)

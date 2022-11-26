@@ -61,7 +61,3 @@ def translation_query(triplet: str) -> str:
             .filter(RnaCodon.codon_name == triplet)
         )
         return result[0].acid_name
-
-
-if __name__ == '__main__':
-    pass

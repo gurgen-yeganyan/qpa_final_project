@@ -36,13 +36,3 @@ def convert_rna_to_protein(m_rna: str) -> str:
 
 if __name__ == '__main__':
     create_database()
-
-    test_dna_strand = 'GCTAACTAAC'
-    test_m_rna = convert_dna_to_rna(test_dna_strand)
-    print(f'{test_dna_strand} ---> {test_m_rna}')
-    print(test_m_rna == 'GCUAACUAAC')
-
-    test_rna = 'CCCGUCCUUGAUUGGCUUGAAGAGAAGUUU'
-    test_protein = convert_rna_to_protein(test_rna)
-    print(f'{test_rna} ---> {test_protein}')
-    print(test_protein == 'PVLDWLEEKF')
