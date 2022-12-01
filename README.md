@@ -95,7 +95,7 @@ bio file plot sample_dna.txt 5
 ```
 
 ### When you're done
-1. Type ```exit``` to quit from bash (my apologies to linux users here)
+1. Type ```exit``` to quit from bash.
 2. Run the following from your initial terminal to switch Docker containers off:
 ```
 docker-compose down
