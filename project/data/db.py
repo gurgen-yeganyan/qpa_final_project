@@ -3,8 +3,6 @@ Create and access a database used for DNA to mRNA transcription
 and mRNA to protein translation.
 """
 
-from os import path
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -12,15 +10,12 @@ from data.table_models import DnaNucleotide, RnaNucleotide, RnaCodon, AminoAcid
 from data.table_models import Base
 from data.conversion_tables import transcription_table, translation_table
 
-
-ENGINE = create_engine('sqlite:///project_database.db')
+DATABASE_URL = 'postgresql+psycopg2://ribosome:docker@db:5432/bio_data'
+ENGINE = create_engine(DATABASE_URL)
 SESSION = sessionmaker(ENGINE)
 
 
 def create_database() -> None:
-    if path.isfile('project_database.db'):
-        return
-
     Base.metadata.create_all(ENGINE)
     with SESSION() as session:
         for nuke in transcription_table:
